@@ -55,13 +55,6 @@ const PhotosContainer = ({ onNext } : { onNext: () => void }) => {
     }
     };
 
-    useEffect(() => {
-        imagePaths.forEach((src) => {
-            const img = new Image();
-            img.src = src;
-        });
-    }, []);
-
     return (
     <section className="photos-container">
         <header><AnimatedText>Nasze Wspomnienia</AnimatedText></header>
