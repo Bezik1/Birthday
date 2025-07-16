@@ -11,25 +11,25 @@ const AnimatedText = ({
   style = "bounce",
 }: {
   children: ReactNode;
-  delay?: number,
+  delay?: number;
   style?: AnimationStyle;
 }) => {
   const text = typeof children === "string" ? children : "";
-  const letters = Array.from(text);
+  const words = text.split(" ");
 
   const getAnimationProps = (index: number) => {
     switch (style) {
       case "slide":
         return {
-          initial: { opacity: 0, x: -20, },
+          initial: { opacity: 0, x: -20 },
           animate: { opacity: 1, x: 0 },
-          transition: { delay: delay + index * 0.05, duration: 0.4 } as const,
+          transition: { delay: delay + index * 0.05, duration: 0.4 },
         };
       case "fade":
         return {
           initial: { opacity: 0 },
           animate: { opacity: 1 },
-          transition: { delay: delay + index * 0.03, duration: 0.3 } as const,
+          transition: { delay: delay + index * 0.03, duration: 0.3 },
         };
       case "bounce":
       default:
@@ -41,29 +41,40 @@ const AnimatedText = ({
             type: "spring",
             stiffness: 300,
             damping: 20,
-          } as const,
+          },
         };
     }
   };
 
+  let letterIndex = 0;
+
   return (
-    <span className="animated-text" style={{ display: "inline-block", whiteSpace: "pre-wrap" }}>
-      {letters.map((letter, index) => {
-        const { initial, animate, transition } = getAnimationProps(index);
-        return (
-          <motion.span
-            key={index}
-            initial={initial}
-            animate={animate}
-            transition={transition}
-            style={{ display: "inline-block", whiteSpace: "pre" }}
-          >
-            {letter}
-          </motion.span>
-        );
-      })}
+    <span className="animated-text" style={{ display: "inline", whiteSpace: "normal" }}>
+      {words.map((word, wordIdx) => (
+        <span
+          key={wordIdx}
+          style={{ whiteSpace: "nowrap", display: "inline-block", marginRight: "0.25em" }}
+        >
+          {Array.from(word).map(letter => {
+            const { initial, animate, transition } = getAnimationProps(letterIndex);
+            const span = (
+              <motion.span
+                key={letterIndex}
+                initial={initial}
+                animate={animate}
+                transition={transition as any}
+                style={{ display: "inline-block" }}
+              >
+                {letter}
+              </motion.span>
+            );
+            letterIndex++;
+            return span;
+          })}
+        </span>
+      ))}
     </span>
   );
 };
 
-export default AnimatedText;
+export default AnimatedText

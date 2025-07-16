@@ -36,8 +36,8 @@ const LetterContainer = () =>{
                 <div className="content">
                     <AnimatedText style="fade">W dniu twoich urodzin, życzę ci z całego serca, abyśmy zawsze byli razem, żebyś nie martwiła się </AnimatedText>
                     <AnimatedText delay={3} style="fade">aż tak wieloma sprawami oraz abyś pamiętała o tym że zawsze będę twoim oparciem.</AnimatedText>
-                    <AnimatedText delay={5.5} style="fade">Jesteś najcudowniejszym, co mnie w życiu spotkało i nie mógłbym wymarzyć lepszej partenrki. </AnimatedText>
-                    <AnimatedText delay={8.5} style="fade">Już nie mogę się doczekać jaka przyszłość nas razem czeka.</AnimatedText>
+                    <AnimatedText delay={5.5} style="fade">Jesteś najcudowniejszym, co mnie w życiu spotkało i nie mógłbym wymarzyć lepszej partnerki. </AnimatedText>
+                    <AnimatedText delay={8.5} style="fade">Już nie mogę się doczekać, jaka przyszłość nas razem czeka.</AnimatedText>
                     <br />
                     <div className="signature-container">
                         <AnimatedText delay={10} style="fade">Twój na zawsze,</AnimatedText>

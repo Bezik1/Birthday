@@ -267,6 +267,10 @@
         height: 80%;
     }
 
+    .music-text-area > header {
+        margin-left: -30px;
+    }
+
     .disk-line-text {
         font-size: 2rem;;
     }
@@ -310,8 +314,10 @@
     }
 
     .music-text {
-        width: 80vw;
+        width: 90vw;
         font-size: 0.8rem;
+        padding-left: 20px;
+        margin-left: -20px;
     }
 
     .letter-btn {
