@@ -1,0 +1,29 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.blank {
+  background-color: var(--color-background-light);
+}
+
+.stripes {
+  background: repeating-linear-gradient(
+    to left,
+    var(--color-background-main),
+    var(--color-background-main), 10vw,
+    var(--color-background-alt) 10vw,
+    var(--color-background-alt) 20vw
+  );
+}
+
+.circles {
+    background-image: radial-gradient(circle, #4ca38c 10%, transparent 11%);
+    background-size: 40px 40px;
+    background-repeat: repeat;  
+}
