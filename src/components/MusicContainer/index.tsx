@@ -114,12 +114,12 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
                     },
                 },
                 playerVars: {
-                    autoplay: 0,
+                    autoplay: 1,
                     controls: 0,
                     modestbranding: 1,
                     rel: 0,
                     playsinline: 1,
-                    muted: 1,
+                    mute: 1,
                 },
             });
         };
