@@ -220,8 +220,8 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
                     style={{ rotate: rotationAngle }}
                 >
                     <div className="disk-line-text">
-                        <strong><AnimatedText style="bounce">{title}</AnimatedText></strong>
-                        <AnimatedText delay={0.6} style="bounce">{author}</AnimatedText>
+                        <strong key={title}><AnimatedText style="bounce">{title}</AnimatedText></strong>
+                        <AnimatedText delay={0.6} style="bounce" key={author}>{author}</AnimatedText>
                     </div>
                 </motion.div>
             </motion.div>
@@ -271,8 +271,8 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
                     <motion.header>
                         <MusicNoteIcon className="music-note" />
                         <motion.div className="header-content">
-                            <motion.strong><AnimatedText delay={0.6} style="bounce">{title}</AnimatedText></motion.strong>
-                            <motion.desc><AnimatedText delay={1.2} style="bounce">{author}</AnimatedText></motion.desc>
+                            <motion.strong key={title}><AnimatedText delay={0.6} style="bounce">{title}</AnimatedText></motion.strong>
+                            <motion.desc key={author}><AnimatedText delay={1.2} style="bounce">{author}</AnimatedText></motion.desc>
                         </motion.div>
                     </motion.header>
                     <motion.pre

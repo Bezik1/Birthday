@@ -152,6 +152,7 @@
 }
 
 .panel-ico {
+    z-index: 40;
     cursor: pointer;
     width: 48px;
     height: 48px;
@@ -265,6 +266,14 @@
         margin: 0;
         width: 95%;
         height: 80%;
+    }
+
+    .header-content > strong {
+        font-size: 1rem;
+    }
+
+    .header-content > desc {
+        font-size: 0.75rem;
     }
 
     .music-text-area > header {
