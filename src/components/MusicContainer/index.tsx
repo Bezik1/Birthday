@@ -183,6 +183,18 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
             }
         }
     }, [isPlaying])
+
+    const togglePlayback = () => {
+        if (!playerReady || !playerRef.current) return;
+        
+        if (isPlaying) {
+            playerRef.current.pauseVideo();
+            setIsPlaying(false);
+        } else {
+            playerRef.current.playVideo();
+            setIsPlaying(true);
+        }
+    };
     
 
     return (
@@ -241,7 +253,7 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
                     }}
                 />
             </motion.button>
-            <div ref={playerElementRef} style={{ display: "none" }} />
+            <div ref={playerElementRef} className="visually-hidden" />
             <motion.section
                 className="music-text-container"
                 initial={{ opacity: 0.5, scale: 0 }}
@@ -286,8 +298,8 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
                             onClick={() => setCurrentIndex(currentIndex - 1 < 0 ? songs.length-1 : currentIndex - 1)} className="panel-ico" 
                         />
                         {!isPlaying
-                            ? <PlayIcon onClick={() => setIsPlaying(true)} className="panel-ico bigger-ico" />
-                            : <StopIcon onClick={() => setIsPlaying(false)} className="panel-ico bigger-ico" />
+                            ? <PlayIcon onClick={togglePlayback} className="panel-ico bigger-ico" />
+                            : <StopIcon onClick={togglePlayback} className="panel-ico bigger-ico" />
 
                         }
                         <NextIcon onClick={() => setCurrentIndex((currentIndex+1) % songs.length)} className="panel-ico" />
