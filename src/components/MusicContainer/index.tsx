@@ -285,7 +285,6 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
                             type: "spring"
                         }}
                     >
-                            <motion.div className="line-text" />
                             {text}
                     </motion.pre>
                 </section>
