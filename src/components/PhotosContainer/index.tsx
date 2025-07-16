@@ -8,7 +8,18 @@ const PhotosContainer = ({ onNext } : { onNext: () => void }) => {
     const [visibleCount, setVisibleCount] = useState(1);
     const [imagePaths, setImagePaths] = useState<string[]>([]);
 
-    const imageJPGPaths = Array.from({ length: 11 }, (_, i) => `/assets/${i + 1}.JPG`);
+    const imageJPGPaths = [
+        ...Array.from({ length: 12 }, (_, i) => `/assets/${i + 1}.JPG`),
+        '/assets/24.JPG',
+        '/assets/25.JPG',
+        '/assets/26.JPG',
+        '/assets/27.JPG',
+        '/assets/28.JPG',
+        '/assets/29.JPG',
+        '/assets/30.JPG',
+        '/assets/31.JPG',
+        '/assets/32.JPG',
+    ]
     const imageJPEGPaths = ['/assets/19.JPEG', '/assets/20.JPEG'];
     const imageJpgPaths = ['/assets/14.jpg', '/assets/16.jpg', '/assets/17.jpg', '/assets/18.jpg', '/assets/21.jpg', '/assets/22.jpg', '/assets/23.jpg'];
     const imagePngPaths = ['/assets/13.PNG', '/assets/15.PNG'];
@@ -57,6 +68,11 @@ const PhotosContainer = ({ onNext } : { onNext: () => void }) => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, type: 'spring', delay: 0.5 }}
         >
+            <div style={{ display: "none" }}>
+                {imagePaths.map((src, idx) => (
+                    <img key={idx} src={src} alt={`preload-${idx}`} loading="eager" />
+                ))}
+            </div>
             {visibleImages.map((src, i) => (
             <motion.div
                 key={(startIndex + i) % imagePaths.length} 
