@@ -263,6 +263,7 @@
         align-items: center;
         justify-content: space-between;
         margin: 0;
+        width: 95%;
         height: 80%;
     }
 
@@ -290,7 +291,7 @@
     }
 
     .music-text-container {
-        width: 100%;
+        width: 95%;
         height: 30vh;
         border-top-right-radius: 2rem;
         border-bottom-right-radius: 2rem;

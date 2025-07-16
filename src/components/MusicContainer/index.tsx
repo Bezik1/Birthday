@@ -118,6 +118,8 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
                     controls: 0,
                     modestbranding: 1,
                     rel: 0,
+                    playsinline: 1,
+                    muted: 1,
                 },
             });
         };
@@ -191,6 +193,7 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
             playerRef.current.pauseVideo();
             setIsPlaying(false);
         } else {
+            playerRef.current.unMute();
             playerRef.current.playVideo();
             setIsPlaying(true);
         }
