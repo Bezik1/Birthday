@@ -253,7 +253,10 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
                     }}
                 />
             </motion.button>
-            <div ref={playerElementRef} className="visually-hidden" />
+            <div
+                ref={playerElementRef}
+                style={{ width: 0, height: 0, opacity: 0, pointerEvents: "none", position: "absolute" }}
+            />
             <motion.section
                 className="music-text-container"
                 initial={{ opacity: 0.5, scale: 0 }}
