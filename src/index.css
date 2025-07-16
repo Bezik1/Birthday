@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=Roboto:wght@400;500&family=Pacifico&family=Rubik:wght@400;700;900&display=swap');
 
 :root {
+  overflow-x: hidden;
   --color-background-main: #1b2d24;
   --color-background-alt: #224036;
   --color-background-light: #3c5f50;

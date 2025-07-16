@@ -69,6 +69,7 @@
     position: relative;
     opacity: 0.5;
     overflow: scroll;
+    overflow-x: hidden;
     margin: 12px;
     width: 400px;
     padding-left: 20px;
