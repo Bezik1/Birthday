@@ -3,7 +3,7 @@ import "./index.css"
 
 import { motion } from "motion/react"
 import MusicNoteIcon from "../icons/MusicNoteIcon"
-import { BATHROOM_TEXT, COMPLICATED_TEXT, EXAMPLE_SONG_TEXT, HOT_DEMON_BITCHES_TEXT, IF_YOU_LOVE_HER_TEXT, PERFECT_TEXT, SLOW_DOWN_TEXT, SLUMBER_PARTY_TEXT, VROOM_TEXT } from "../../const"
+import { BATHROOM_TEXT, COMPLICATED_TEXT, EXAMPLE_SONG_TEXT, HOT_DEMON_BITCHES_TEXT, IF_YOU_LOVE_HER_TEXT, PERFECT_TEXT, SLOW_DOWN_TEXT, SLUMBER_PARTY_TEXT, TOXIC_TEXT, VROOM_TEXT } from "../../const"
 import AnimatedText from "../AnimatedText"
 import NextIcon from "../icons/NextIcon"
 import PrevIcon from "../icons/PrevIcon"
@@ -87,6 +87,12 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
             title: "TAKEDOWN",
             author: "K-popowe Łowczynie Demonów",
             text: "Bez przesady ://"
+        },
+        {
+            videoId: "LOZuxwVk7TU",
+            title: "Toxic",
+            author: "Britney Spears",
+            text: TOXIC_TEXT,
         }
     ]
 
@@ -242,7 +248,7 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
                     },
                 }}
                 >
-                Idź do Listu
+                Idź do Mapy Planów
                 <motion.div
                     className="shine-effect"
                     variants={{

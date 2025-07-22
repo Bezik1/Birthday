@@ -91,6 +91,12 @@
     right: 0;
 }
 
+@media(max-width: 1400px) {
+    .starter-btn {
+        width: 250px;
+    }
+}
+
 @media (max-width: 868px) {
     .starter-container {
         width: 80%;

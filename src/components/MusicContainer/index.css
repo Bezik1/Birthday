@@ -206,7 +206,7 @@
 
 @media (max-width: 1400px) {
     .disk-line {
-        top: 15%;
+        top: 25%;
         left: 2.5%;
     }
 
@@ -227,13 +227,14 @@
     }
 
     .music-text-container {
+        width: 37%;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
 
     .music-text {
-        width: 90vw;
+        width: 25vw;
     }
 
     .music-text-area {
@@ -245,7 +246,7 @@
     .letter-btn {
         width: 30vw;
         bottom: 5%;
-        left: 12%;
+        left: 35%;
     }
 }
 

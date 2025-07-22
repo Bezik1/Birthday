@@ -1,0 +1,413 @@
+.bucket-list-container {
+    position: relative;
+    width: 85%;
+    height: 85%;
+    border-radius: 3rem;
+    background-color: var(--color-background-light);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    overflow: hidden;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        var(--color-background-light),
+        var(--color-background-light) 28px,
+        var(--color-border-color) 29px
+    );
+    background-size: cover;
+    border: 2px dashed var(--color-border-color-2);
+}
+
+.bucket-list-container > header {
+    font-family: var(--font-text-special);
+    font-size: var(--font-size-header);
+    color: var(--color-text-special);
+    margin: 0 0 1rem;
+    z-index: 10;
+}
+
+.plans-cotaniner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+    overflow-x: auto;
+    padding: 3rem;
+    width: 85%;
+    height: 65%;
+    border-radius: 1rem;
+    background-color: var(--color-background-alt);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+    scroll-behavior: smooth;
+}
+
+.plan {
+    width: 180px;
+    height: 180px;
+    padding: 1rem;
+    background-color: var(--color-background-section);
+    background-image: repeating-linear-gradient(
+        to bottom,
+        var(--color-background-section),
+        var(--color-background-section) 25px,
+        var(--color-border-color) 26px
+    );
+    background-size: cover;
+    border: 2px solid var(--color-border-color);
+    border-radius: 1rem;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+    font-family: var(--font-text-alt);
+    font-size: 1rem;
+    color: var(--color-text-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+
+.plan > header {
+    margin-top: 5%;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.date {
+    font-family: var(--font-text-sub);
+    font-size: 0.9rem;
+    color: var(--color-text-sub);
+}
+
+.status {
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: var(--color-accent-3);
+}
+
+.plan:hover > .status {
+    color: var(--color-accent-2);
+}
+
+.plan:hover > .date {
+    color: var(--color-accent-2);
+}
+
+.plan::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-text-main);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--color-background-section), 0 0 6px #0000004d;
+    z-index: 2;
+}
+
+.plan::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(
+        135deg,
+        transparent 0%,
+        transparent 50%,
+        #00000033 50%,
+        #00000033 100%
+    );
+    border-bottom-right-radius: 1rem;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.plan:hover {
+    transform: rotate(-1deg) scale(1.04);
+    background-color: var(--color-hover);
+    background-image: repeating-linear-gradient(
+        to bottom,
+        var(--color-hover),
+        var(--color-hover) 25px,
+        var(--color-border-color) 26px
+    );
+    color: var(--color-accent-2);
+}
+
+.plan:hover::before {
+    background-color: var(--color-accent-2);
+}
+
+.new-plan {
+    width: 180px;
+    height: 180px;
+    border: 2px dashed var(--color-accent-3);
+    border-radius: 1rem;
+    background-color: var(--color-background-section);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--color-accent-3);
+    cursor: pointer;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+.new-plan:hover {
+    transform: scale(1.05);
+    background-color: var(--color-hover);
+    color: var(--color-accent-2);
+}
+
+.new-plan-button {
+    background: none;
+    border: none;
+    font-size: 3rem;
+    color: inherit;
+    cursor: pointer;
+}
+
+.new-plan-form {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--color-background-section);
+    background-image: repeating-linear-gradient(
+        to bottom,
+        var(--color-background-section),
+        var(--color-background-section) 25px,
+        var(--color-border-color) 26px
+    );
+    border: 2px solid var(--color-border-color);
+    border-radius: 1rem;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+    font-family: var(--font-text-alt);
+    font-size: 1rem;
+    color: var(--color-text-main);
+    gap: 0.5rem;
+}
+
+
+.new-plan-form::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-text-main);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--color-background-section), 0 0 6px #0000004d;
+    z-index: 2;
+}
+
+.new-plan-form::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(
+        135deg,
+        transparent 0%,
+        transparent 50%,
+        #00000033 50%,
+        #00000033 100%
+    );
+    border-bottom-right-radius: 1rem;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.new-plan-form > header {
+    margin-top: 5%;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.new-plan-form :hover {
+    background-color: var(--color-backgrournd-section);
+
+}
+
+.new-plan-form input {
+    background-color: var(--color-background-light);
+    border: 1px solid var(--color-border-color);
+    color: var(--color-text-main);
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-family: var(--font-text-sub);
+}
+
+.new-plan-form .form-buttons {
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+}
+
+.new-plan-form button {
+    width: 150px;
+    height: 30px;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--color-accent);
+    color: var(--color-accent-2);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.new-plan-form button:hover {
+    background-color: var(--color-hover);
+}
+
+.blank-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plan-popup {
+    width: 400px;
+    height: 500px;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    background-color: var(--color-background-section);
+    background-image: repeating-linear-gradient(
+        to bottom,
+        var(--color-background-section),
+        var(--color-background-section) 25px,
+        var(--color-border-color) 26px
+    );
+    border: 2px solid var(--color-border-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    transform: translate(-50%, -50%);
+    z-index: 101;
+    color: var(--color-text-main);
+    font-family: var(--font-text-alt);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.plan-popup .description {
+    white-space: pre-wrap;
+    margin-top: 20%;
+    flex-grow: 1;
+}
+
+.plan-popup .date, .plan-popup .status {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-accent-2);
+    cursor: pointer;
+}
+
+.blur {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: #00000085;
+    filter: blur(30px);
+}
+
+.input {
+    background-color: inherit;
+    border: none;
+    background: transparent;
+}
+
+.title {
+    color: inherit;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    background: transparent;
+}
+
+.text-area {
+    font-family: inherit;
+    color: inherit;
+    font-size: 1em;
+    background-color: inherit;
+    border: none;
+    background: transparent;
+}
+
+.delete-btn {
+    bottom: -15%;
+    position: absolute;
+    left: 0;
+    z-index: 4;
+    width: 500px;
+    background-color: var(--color-background-alt);
+}
+
+@media (max-width: 1400px) {
+    .plan-popup {
+        left: 60%;
+    }
+}
+
+@media (max-width: 868px) {
+    .bucket-list-container {
+        margin-top: 20%;
+        height: 57%;
+    }
+
+    .plans-cotaniner {
+        height: 40%;
+    }
+
+    .plan-popup {
+        width: 250px;
+        height: 400px;
+        left: 10%;
+        top: 5%;
+    }
+
+    .delete-btn {
+        bottom: -4%;
+        left: 20%;
+        width: 200px;
+    }
+
+    .next-btn {
+        margin-bottom: 15%;
+    }
+}

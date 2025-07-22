@@ -5,9 +5,10 @@ import { useState } from "react"
 import { AnimatePresence } from "framer-motion"
 import MusicContainer from "./components/MusicContainer"
 import LetterContainer from "./components/LetterContainer"
+import BucketListContainer from "./components/BucketListContainer"
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<"starter" | "photos" | "music" | "letter">("starter")
+  const [currentPage, setCurrentPage] = useState<"starter" | "photos" | "music" | "letter" | "bucketList">("starter")
   const [backgroundStyle, setBackgroundStyle] = useState<"stripes" | "blank" | "circles">("stripes")
 
   const goToPhotos = () =>{
@@ -24,6 +25,11 @@ export default function App() {
     setBackgroundStyle("circles")
   }
 
+  const goToBucketList = () =>{
+    setCurrentPage("bucketList")
+    setBackgroundStyle("stripes")
+  }
+
   return (
     <div className={`app ${backgroundStyle}`}>
       <title>Urodziny Iwonki</title>
@@ -38,7 +44,12 @@ export default function App() {
         )}
         {currentPage == "music" && (
           <>
-            <MusicContainer key="music" onNext={goToLetter} />
+            <MusicContainer key="music" onNext={goToBucketList} />
+          </>
+        )}
+        {currentPage == "bucketList" && (
+          <>
+            <BucketListContainer key="bucketList" onNext={goToLetter}/>
           </>
         )}
         {currentPage == "letter" && (
