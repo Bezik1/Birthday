@@ -21,7 +21,21 @@ const PhotosContainer = ({ onNext } : { onNext: () => void }) => {
         '/assets/19.JPEG', '/assets/20.JPEG',
         '/assets/14.jpg', '/assets/16.jpg', '/assets/17.jpg', '/assets/18.jpg',
         '/assets/21.jpg', '/assets/22.jpg', '/assets/23.jpg',
-        '/assets/13.PNG', '/assets/15.PNG'
+        '/assets/13.PNG', '/assets/15.PNG',
+        '/assets/33.png',
+        '/assets/34.png',
+        '/assets/35.png',
+        '/assets/36.png',
+        '/assets/37.png',
+        '/assets/38.png',
+        '/assets/39.png',
+        '/assets/40.png',
+        '/assets/41.png',
+        '/assets/42.png',
+        '/assets/43.png',
+        '/assets/44.png',
+        '/assets/45.png',
+        '/assets/46.png',
     ];
 
     const visibleImages = Array.from({ length: visibleCount }, (_, i) => {
