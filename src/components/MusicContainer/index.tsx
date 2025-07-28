@@ -3,12 +3,12 @@ import "./index.css"
 
 import { motion } from "motion/react"
 import MusicNoteIcon from "../icons/MusicNoteIcon"
-import { BATHROOM_TEXT, COMPLICATED_TEXT, EXAMPLE_SONG_TEXT, HOT_DEMON_BITCHES_TEXT, IF_YOU_LOVE_HER_TEXT, PERFECT_TEXT, SLOW_DOWN_TEXT, SLUMBER_PARTY_TEXT, TOXIC_TEXT, VROOM_TEXT } from "../../const"
 import AnimatedText from "../AnimatedText"
 import NextIcon from "../icons/NextIcon"
 import PrevIcon from "../icons/PrevIcon"
 import PlayIcon from "../icons/PlayIcon"
 import StopIcon from "../icons/StopIcon"
+import { SONGS } from "../../const"
 
 const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
     const [isPlaying, setIsPlaying] = useState(false)
@@ -20,83 +20,11 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
     const [rotationAngle, setRotationAngle] = useState(0)
     const animationFrameRef = useRef<number | null>(null)
     const lastTimestampRef = useRef<number | null>(null)
+    const [duration, setDuration] = useState(0)
+    const [isSeeking, setIsSeeking] = useState(false);
+    const [wasPlayingBeforeSeek, setWasPlayingBeforeSeek] = useState(false);
 
-    const songs : { videoId: string, author: string, title: string, text: string }[]= [
-        {
-            videoId: "ml6w6KDNCzU",
-            author: "Rango Ukulele",
-            title: "Jesteś Kluską",
-            text: EXAMPLE_SONG_TEXT,
-        },
-        {
-            videoId: "g1TYOwPt4oE",
-            author: "Montell Fish",
-            title: "Bathroom",
-            text: BATHROOM_TEXT,
-        },
-        {
-            videoId: "4kbSC3HXfJw",
-            author: "Chase Atlantic",
-            title: "Slow Down",
-            text: SLOW_DOWN_TEXT,
-        },
-        {
-            videoId: "VWr0hSKLcXY",
-            author: "Lud Berk",
-            text: "Specjalnie dla ciebie <33",
-            title: "This is Berk",
-        },
-        {
-            videoId: "qfAqtFuGjWM",
-            author: "Vroom Vroom",
-            title: "Charli XCX",
-            text: VROOM_TEXT,
-        },
-        {
-            videoId: "5NPBIwQyPWE",
-            author: "Avril Lavigne",
-            title: "Complicated",
-            text: COMPLICATED_TEXT,
-        },
-        {
-            videoId: "UkYpdM3aup8",
-            author: "Ashnikko",
-            title: "Slumber Party",
-            text: SLUMBER_PARTY_TEXT,
-        },
-        {
-            videoId: "cNGjD0VG4R8",
-            author: "Ed Sheeran",
-            title: "Perfect",
-            text: PERFECT_TEXT,
-        },
-        {
-            videoId: "wDaiiluanQc",
-            author: "Forest Blakk",
-            title: "If You Love Her",
-            text: IF_YOU_LOVE_HER_TEXT,
-        },
-        {
-            videoId: "kdZzNsnKkpU",
-            title: "HOT DEMON B!TCHES NEAR U",
-            author: "CORPSE",
-            text: HOT_DEMON_BITCHES_TEXT,
-        },
-        {
-            videoId: "7XRcflf_E0c",
-            title: "TAKEDOWN",
-            author: "K-popowe Łowczynie Demonów",
-            text: "Bez przesady ://"
-        },
-        {
-            videoId: "LOZuxwVk7TU",
-            title: "Toxic",
-            author: "Britney Spears",
-            text: TOXIC_TEXT,
-        }
-    ]
-
-    const { videoId, author, text, title } = songs[currentIndex]
+    const { videoId, author, text, title } = SONGS[currentIndex]
 
     useEffect(() => {
         setPlaybackTime(0);
@@ -115,8 +43,11 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
             playerRef.current = new (window as any).YT.Player(playerElementRef.current, {
                 videoId,
                 events: {
-                    onReady: () => {
-                        if (!destroyed) setPlayerReady(true);
+                    onReady: (e: any) => {
+                        if (!destroyed) {
+                            setPlayerReady(true);
+                            setDuration(e.target.getDuration());
+                        }
                     },
                 },
                 playerVars: {
@@ -205,6 +136,19 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
         }
     };
     
+    useEffect(() => {
+        let interval: any;
+    
+        if (isPlaying && playerRef.current && !isSeeking) {
+            interval = setInterval(() => {
+                setPlaybackTime(playerRef.current.getCurrentTime());
+            }, 1000);
+        }
+    
+        return () => {
+            clearInterval(interval);
+        };
+    }, [isPlaying, isSeeking]);
 
     return (
         <section className="music-container">
@@ -306,15 +250,46 @@ const MusicContainer = ({ onNext } : { onNext: () => void }) =>{
 
                     <div className="panel-btns">
                         <PrevIcon 
-                            onClick={() => setCurrentIndex(currentIndex - 1 < 0 ? songs.length-1 : currentIndex - 1)} className="panel-ico" 
+                            onClick={() => setCurrentIndex(currentIndex - 1 < 0 ? SONGS.length-1 : currentIndex - 1)} className="panel-ico" 
                         />
                         {!isPlaying
                             ? <PlayIcon onClick={togglePlayback} className="panel-ico bigger-ico" />
                             : <StopIcon onClick={togglePlayback} className="panel-ico bigger-ico" />
 
                         }
-                        <NextIcon onClick={() => setCurrentIndex((currentIndex+1) % songs.length)} className="panel-ico" />
+                        <NextIcon onClick={() => setCurrentIndex((currentIndex+1) % SONGS.length)} className="panel-ico" />
                     </div>
+                    <motion.input
+                        type="range"
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.5 }}
+                        min={0}
+                        max={duration}
+                        value={playbackTime}
+                        onMouseDown={() => {
+                            setIsSeeking(true);
+                            setWasPlayingBeforeSeek(isPlaying);
+                            if (isPlaying) {
+                                playerRef.current?.pauseVideo();
+                            }
+                        }}
+                        onMouseUp={(e) => {
+                            const time = parseFloat(e.currentTarget.value);
+                            setPlaybackTime(time);
+                            playerRef.current?.seekTo(time, true);
+                            setIsSeeking(false);
+                            if (wasPlayingBeforeSeek) {
+                                playerRef.current?.playVideo();
+                            }
+                        }}
+                        onChange={(e) => {
+                            const time = parseFloat(e.target.value);
+                            setPlaybackTime(time);
+                        }}
+                        className="seek-slider"
+                    />
+
                 </div>
             </motion.section>
         </section>

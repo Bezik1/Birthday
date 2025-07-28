@@ -203,6 +203,38 @@
     border: 0;
 }
 
+.seek-slider {
+    width: 80%;
+    margin-top: 1rem;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--color-border-color);
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+.seek-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-accent-3);
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    transition: background 0.2s ease;
+}
+
+.seek-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-accent-3);
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+}
 
 @media (max-width: 1400px) {
     .disk-line {
@@ -224,6 +256,13 @@
 
     .panel-btns {
         margin-bottom: 25%;
+    }
+
+    .seek-slider {
+        position: absolute;
+        margin-top: 20px;
+        margin-left: 5%;
+        width: 50%;
     }
 
     .music-text-container {
@@ -307,18 +346,26 @@
     .panel {
         position: absolute;
         left: 26%;
-        bottom: -25%;
+        bottom: -40%;
     }
 
     .panel-btns {
-        margin-bottom: 0;
+        position: absolute;
+        margin-top: -100px;
+    }
+
+    .seek-slider {
+        margin-top: 0;
+        margin-bottom: 80px;
     }
 
     .music-text {
-        width: 90vw;
+        width: 95vw;
+        height: 10vh;
         font-size: 0.8rem;
         padding-left: 20px;
         margin-left: -20px;
+        font-size: 12px;
     }
 
     .letter-btn {

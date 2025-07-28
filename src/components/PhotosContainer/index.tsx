@@ -2,45 +2,15 @@ import { useState } from "react";
 import "./index.css";
 import { motion, MotionValue } from "motion/react";
 import AnimatedText from "../AnimatedText";
+import { IMAGE_PATHS } from "../../const";
 
 const PhotosContainer = ({ onNext } : { onNext: () => void }) => {
     const [startIndex, setStartIndex] = useState(0);
     const [visibleCount, setVisibleCount] = useState(1);
 
-    const imagePaths = [
-        ...Array.from({ length: 12 }, (_, i) => `/assets/${i + 1}.JPG`),
-        '/assets/24.JPG',
-        '/assets/25.JPG',
-        '/assets/26.JPG',
-        '/assets/27.JPG',
-        '/assets/28.JPG',
-        '/assets/29.JPG',
-        '/assets/30.JPG',
-        '/assets/31.JPG',
-        '/assets/32.JPG',
-        '/assets/19.JPEG', '/assets/20.JPEG',
-        '/assets/14.jpg', '/assets/16.jpg', '/assets/17.jpg', '/assets/18.jpg',
-        '/assets/21.jpg', '/assets/22.jpg', '/assets/23.jpg',
-        '/assets/13.PNG', '/assets/15.PNG',
-        '/assets/33.png',
-        '/assets/34.png',
-        '/assets/35.png',
-        '/assets/36.png',
-        '/assets/37.png',
-        '/assets/38.png',
-        '/assets/39.png',
-        '/assets/40.png',
-        '/assets/41.png',
-        '/assets/42.png',
-        '/assets/43.png',
-        '/assets/44.png',
-        '/assets/45.png',
-        '/assets/46.png',
-    ];
-
     const visibleImages = Array.from({ length: visibleCount }, (_, i) => {
-        const index = (startIndex + i) % imagePaths.length;
-        return imagePaths[index];
+        const index = (startIndex + i) % IMAGE_PATHS.length;
+        return IMAGE_PATHS[index];
     });
 
     const getStyle = (i: number): MotionValue => {
@@ -62,10 +32,10 @@ const PhotosContainer = ({ onNext } : { onNext: () => void }) => {
     };
 
     const handleNext = () => {
-    if (visibleCount < 5 && visibleCount < imagePaths.length) {
+    if (visibleCount < 5 && visibleCount < IMAGE_PATHS.length) {
         setVisibleCount(visibleCount + 1);
     } else {
-        setStartIndex((startIndex + 1) % imagePaths.length);
+        setStartIndex((startIndex + 1) % IMAGE_PATHS.length);
     }
     };
 
@@ -79,11 +49,11 @@ const PhotosContainer = ({ onNext } : { onNext: () => void }) => {
         >
             {visibleImages.map((src, i) => (
             <motion.div
-                key={(startIndex + i) % imagePaths.length} 
+                key={(startIndex + i) % IMAGE_PATHS.length} 
                 className="image-card" 
                 style={getStyle(i % 6) as any}
             >
-                <img className="image" src={src} alt={`photo-${(startIndex + i) % imagePaths.length}`} />
+                <img className="image" src={src} alt={`photo-${(startIndex + i) % IMAGE_PATHS.length}`} />
             </motion.div>
             ))}
         </motion.div>

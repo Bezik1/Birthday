@@ -540,3 +540,109 @@ I think I'm ready now (I think I'm ready now)
 Intoxicate me now with your lovin' now
 I think I'm ready now
 `
+
+export const SONGS : { videoId: string, author: string, title: string, text: string }[]= [
+    {
+        videoId: "ml6w6KDNCzU",
+        author: "Rango Ukulele",
+        title: "Jesteś Kluską",
+        text: EXAMPLE_SONG_TEXT,
+    },
+    {
+        videoId: "g1TYOwPt4oE",
+        author: "Montell Fish",
+        title: "Bathroom",
+        text: BATHROOM_TEXT,
+    },
+    {
+        videoId: "4kbSC3HXfJw",
+        author: "Chase Atlantic",
+        title: "Slow Down",
+        text: SLOW_DOWN_TEXT,
+    },
+    {
+        videoId: "VWr0hSKLcXY",
+        author: "Lud Berk",
+        text: "Specjalnie dla ciebie <33",
+        title: "This is Berk",
+    },
+    {
+        videoId: "qfAqtFuGjWM",
+        author: "Vroom Vroom",
+        title: "Charli XCX",
+        text: VROOM_TEXT,
+    },
+    {
+        videoId: "5NPBIwQyPWE",
+        author: "Avril Lavigne",
+        title: "Complicated",
+        text: COMPLICATED_TEXT,
+    },
+    {
+        videoId: "UkYpdM3aup8",
+        author: "Ashnikko",
+        title: "Slumber Party",
+        text: SLUMBER_PARTY_TEXT,
+    },
+    {
+        videoId: "cNGjD0VG4R8",
+        author: "Ed Sheeran",
+        title: "Perfect",
+        text: PERFECT_TEXT,
+    },
+    {
+        videoId: "wDaiiluanQc",
+        author: "Forest Blakk",
+        title: "If You Love Her",
+        text: IF_YOU_LOVE_HER_TEXT,
+    },
+    {
+        videoId: "kdZzNsnKkpU",
+        title: "HOT DEMON B!TCHES NEAR U",
+        author: "CORPSE",
+        text: HOT_DEMON_BITCHES_TEXT,
+    },
+    {
+        videoId: "7XRcflf_E0c",
+        title: "TAKEDOWN",
+        author: "K-popowe Łowczynie Demonów",
+        text: "Bez przesady ://"
+    },
+    {
+        videoId: "LOZuxwVk7TU",
+        title: "Toxic",
+        author: "Britney Spears",
+        text: TOXIC_TEXT,
+    }
+]
+
+export const IMAGE_PATHS = [
+    ...Array.from({ length: 12 }, (_, i) => `/assets/${i + 1}.JPG`),
+    '/assets/24.JPG',
+    '/assets/25.JPG',
+    '/assets/26.JPG',
+    '/assets/27.JPG',
+    '/assets/28.JPG',
+    '/assets/29.JPG',
+    '/assets/30.JPG',
+    '/assets/31.JPG',
+    '/assets/32.JPG',
+    '/assets/19.JPEG', '/assets/20.JPEG',
+    '/assets/14.jpg', '/assets/16.jpg', '/assets/17.jpg', '/assets/18.jpg',
+    '/assets/21.jpg', '/assets/22.jpg', '/assets/23.jpg',
+    '/assets/13.PNG', '/assets/15.PNG',
+    '/assets/33.png',
+    '/assets/34.png',
+    '/assets/35.png',
+    '/assets/36.png',
+    '/assets/37.png',
+    '/assets/38.png',
+    '/assets/39.png',
+    '/assets/40.png',
+    '/assets/41.png',
+    '/assets/42.png',
+    '/assets/43.png',
+    '/assets/44.png',
+    '/assets/45.png',
+    '/assets/46.png',
+];
