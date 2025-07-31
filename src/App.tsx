@@ -30,33 +30,28 @@ export default function App() {
     setBackgroundStyle("stripes")
   }
 
+  const getCurrentPage = (page: string) =>{
+    switch(page) {
+      case "starter":
+        return <StarterContainer key="starter" onNext={goToPhotos} />
+      case "photos":
+        return <PhotosContainer key="photos" onNext={goToMusic} />
+      case "music":
+        return <MusicContainer key="music" onNext={goToBucketList} />
+      case "bucketList":
+        return <BucketListContainer key="bucketList" onNext={goToLetter}/>
+      case "letter":
+        return <LetterContainer key="letter"/>
+      default:
+        return <StarterContainer key="starter" onNext={goToPhotos} />
+    }
+  }
+
   return (
     <div className={`app ${backgroundStyle}`}>
       <title>Urodziny Iwonki</title>
       <AnimatePresence mode="wait">
-        {currentPage === "starter" && (
-          <StarterContainer key="starter" onNext={goToPhotos} />
-        )}
-        {currentPage === "photos" && (
-          <>
-            <PhotosContainer key="photos" onNext={goToMusic} />
-          </>
-        )}
-        {currentPage == "music" && (
-          <>
-            <MusicContainer key="music" onNext={goToBucketList} />
-          </>
-        )}
-        {currentPage == "bucketList" && (
-          <>
-            <BucketListContainer key="bucketList" onNext={goToLetter}/>
-          </>
-        )}
-        {currentPage == "letter" && (
-          <>
-            <LetterContainer key="letter"/>
-          </>
-        )}
+        {getCurrentPage(currentPage)}
       </AnimatePresence>
     </div>
   )
